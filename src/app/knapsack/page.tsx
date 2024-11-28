@@ -2,11 +2,17 @@
 import React, { useState, useRef } from 'react';
 import { Package, PlusCircle, Calculator, ClipboardCheck, Briefcase } from 'lucide-react';
 
+interface KnapsackResult {
+    maxProfit: number;
+    picked: number[];
+    dp: number[][];
+}
+
 const Knapsack: React.FC = () => {
   const [capacity, setCapacity] = useState('');
   const [values, setValues] = useState<string[]>(['']);
   const [weights, setWeights] = useState<string[]>(['']);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<KnapsackResult | null>(null);
   const resultRef = useRef<HTMLDivElement | null>(null);
 
   const handleCapacityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
